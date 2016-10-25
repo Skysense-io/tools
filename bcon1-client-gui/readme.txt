@@ -1,8 +1,9 @@
 BCON1 Client GUI
 
 Installation
-- Un-compress Installer.zip
-- Run setup.exe
+- Download Installer.zip
+- Uncompress Installer.zip file
+- Locate and execute Run setup.exe
 - When the installation is complete GUI opens itself.
 
 Usage
