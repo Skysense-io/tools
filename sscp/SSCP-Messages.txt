@@ -1,0 +1,85 @@
+
+# Switch to CLI mode 
+Message Frame; F20A000202
+
+#Set Alt
+
+Message Frame: F2080201A40202
+
+#Set GPS
+
+Message Frame: F20624343830372E3033382C4E2C30313133312E3030302C452C3233303831352C3132333531390202
+
+#Set ICAO Id
+
+Message Frame: F204035341530202
+
+F2  = Incoming
+04  = ICAO id fn (cmd=4)
+03  = 3 (payload length)
+53  = S 
+41  = A
+53  = S
+02  = crc byt1
+02  = crc byte2
+
+
+#Set Mutual suppression On / Transmit Off
+
+Message Frame: F202000202 	
+
+F2  = incoming
+02  = txs fn (cmd=2)
+00  = 0 (payload length)
+02  = crc byt1
+02  = crc byte2
+
+# Set Mutual suppression Off / Transmit On 
+
+Message Frame; F203000202
+
+F2  = incoming
+03  = txs fn (cmd=3)
+00  = 0 (payload length)
+02  = crc byt1
+02  = crc byte2
+
+
+
+# Switch to CLI mode 
+Message Frame; F20A000202
+
+F2  = incoming
+0A  = cli fn (cmd=10)
+00  = 0 (payload length)
+02  = crc byt1
+02  = crc byte2
+
+
+
+#Outgoing message from BCON1
+
+# Acknowledge - OK
+
+Message Frame; F36401000202
+Ascii: ód
+
+F3  = Outgoing
+64  = ack fn (cmd=3)
+01  = 1 (payload length)
+00  = 0 (OK)
+02  = crc byt1
+02  = crc byte2
+
+# Acknowledge - Not OK
+
+Message Frame; F36401010202
+Ascii: ódód
+
+F3  = Outgoing
+64  = ack fn (cmd=3)
+01  = 1 (payload length)
+00  = 1 (NOK)
+02  = crc byt1
+02  = crc byte2
+
