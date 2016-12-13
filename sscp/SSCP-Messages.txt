@@ -1,31 +1,6 @@
-
-# Switch to CLI mode 
-Message Frame; F20A000202
-
-#Set Alt
-
-Message Frame: F2080201A40202
-
-#Set GPS
-
-Message Frame: F20624343830372E3033382C4E2C30313133312E3030302C452C3233303831352C3132333531390202
-
-#Set ICAO Id
-
-Message Frame: F204035341530202
-
-F2  = Incoming
-04  = ICAO id fn (cmd=4)
-03  = 3 (payload length)
-53  = S 
-41  = A
-53  = S
-02  = crc byt1
-02  = crc byte2
-
+##Incoming messages to BCON1###
 
 #Set Mutual suppression On / Transmit Off
-
 Message Frame: F202000202 	
 
 F2  = incoming
@@ -33,9 +8,9 @@ F2  = incoming
 00  = 0 (payload length)
 02  = crc byt1
 02  = crc byte2
+-------------------------------------------
 
 # Set Mutual suppression Off / Transmit On 
-
 Message Frame; F203000202
 
 F2  = incoming
@@ -43,8 +18,55 @@ F2  = incoming
 00  = 0 (payload length)
 02  = crc byt1
 02  = crc byte2
+-------------------------------------------
 
+#Set ICAO Id
+Message Frame: F204035341530202
 
+F2  = Incoming
+04  = ICAO id fn (cmd=04)
+03  = 3 (payload length)
+53  = S 
+41  = A
+53  = S
+02  = crc byt1
+02  = crc byte2
+-------------------------------------------
+
+#Set GPS
+Message Frame: F20624343830372E3033382C4E2C
+               30313133312E3030302C452C3233
+			   303831352C3132333531390202
+
+F2 = Incoming
+06 = Set GPS (cmd=06)
+24 = 36 (payload length)
+343830372E303338 = 4807.038
+2C = ,
+4E = N
+2C = ,
+30313133312E303030 = 01131.000
+2C = ,
+45 = E
+2C = ,
+323330383135 = 230815 (Date)
+2C = , 
+313233353139 = 123519 (Time)
+02  = crc byt1
+02  = crc byte2
+-------------------------------------------
+
+#Set Altitude
+Message Frame: F2080201A40202
+
+F2  = Incoming
+08  = Set altitude (cmd=08)
+02  = 2 (payload length)
+01  
+A4  = (01A4 - 420 Foot)
+02  = crc byt1
+02  = crc byte2
+-------------------------------------------
 
 # Switch to CLI mode 
 Message Frame; F20A000202
@@ -54,15 +76,12 @@ F2  = incoming
 00  = 0 (payload length)
 02  = crc byt1
 02  = crc byte2
+-------------------------------------------
 
-
-
-#Outgoing message from BCON1
+###Outgoing messages from BCON1###
 
 # Acknowledge - OK
-
 Message Frame; F36401000202
-Ascii: ód
 
 F3  = Outgoing
 64  = ack fn (cmd=3)
@@ -70,11 +89,10 @@ F3  = Outgoing
 00  = 0 (OK)
 02  = crc byt1
 02  = crc byte2
+-------------------------------------------
 
 # Acknowledge - Not OK
-
 Message Frame; F36401010202
-Ascii: ódód
 
 F3  = Outgoing
 64  = ack fn (cmd=3)
@@ -82,4 +100,4 @@ F3  = Outgoing
 00  = 1 (NOK)
 02  = crc byt1
 02  = crc byte2
-
+-------------------------------------------
